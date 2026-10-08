@@ -1,7 +1,22 @@
+﻿import { Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Home from './pages/Home';
+import ProtectedRoute from './components/ProtectedRoute';
+
 export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
-      <h1 className="text-3xl font-bold text-blue-600">AutoConnect - Gara Web</h1>
-    </div>
-  )
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
 }
