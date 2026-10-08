@@ -1,5 +1,5 @@
 ﻿import { useEffect } from 'react';
-import { Slot, useRouter, useSegments } from 'expo-router';
+import { Stack, useRouter, useSegments } from 'expo-router';
 import { ActivityIndicator, View } from 'react-native';
 import { AuthProvider, useAuth } from '../context/AuthContext';
 
@@ -22,7 +22,23 @@ function Guard() {
       </View>
     );
   }
-  return <Slot />;
+
+  return (
+    <Stack
+      screenOptions={{
+        headerTintColor: '#2563eb',
+        headerBackTitle: 'Quay lại',
+        contentStyle: { backgroundColor: '#f1f5f9' },
+      }}
+    >
+      <Stack.Screen name="index" options={{ title: 'AutoConnect' }} />
+      <Stack.Screen name="login" options={{ headerShown: false }} />
+      <Stack.Screen name="register" options={{ headerShown: false }} />
+      <Stack.Screen name="vehicles/index" options={{ title: 'Cars passport' }} />
+      <Stack.Screen name="vehicles/form" options={{ title: 'Thông tin xe' }} />
+      <Stack.Screen name="vehicles/[id]" options={{ title: 'Chi tiết xe' }} />
+    </Stack>
+  );
 }
 
 export default function RootLayout() {

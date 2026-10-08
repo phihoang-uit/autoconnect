@@ -5,6 +5,7 @@ import { supabase } from './config/supabase.js';
 import authRoutes from './routes/auth.js';
 import garageRoutes from './routes/garage.js';
 import garageServiceRoutes from './routes/garageServices.js';
+import vehicleRoutes from './routes/vehicles.js';
 
 const app = express();
 app.use(cors());
@@ -23,6 +24,7 @@ app.get('/api/health/db', async (req, res) => {
 app.use('/api', authRoutes);
 app.use('/api', garageRoutes);
 app.use('/api', garageServiceRoutes);
+app.use('/api', vehicleRoutes);
 
 app.listen(process.env.PORT, () =>
   console.log(`Server chạy tại http://localhost:${process.env.PORT}`)
