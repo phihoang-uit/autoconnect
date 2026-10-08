@@ -2,6 +2,8 @@
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
+import Services from './pages/Services';
+import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
@@ -10,13 +12,15 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route
-        path="/"
         element={
           <ProtectedRoute>
-            <Home />
+            <Layout />
           </ProtectedRoute>
         }
-      />
+      >
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+      </Route>
     </Routes>
   );
 }
